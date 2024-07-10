@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Manual Instalacion</title>
+</head>
+<body>
+    <header>Manual de instalación del ERP360 en el Servidor Virutal</header>
+    <div id="top">
+        <div class="divcentrado">
+            <a href="#opcion1">1.- Backup BBDD SQL de mi ordenador</a>
+        </div>
+        <div  class="divcentrado">
+            <a href="#opcion2">2.- Backup ERP ultima Version</a>
+        </div>
+        <div  class="divcentrado">
+            <a href="#opcion3">3.- Copiar a la Carpeta Compartida</a>
+        </div>
+        <div  class="divcentrado">
+            <a href="#opcion4">4.- Recuperar en el Servidor Virtual la instalación</a>
+        </div>
+        <div  class="divcentrado">
+            <a href="#opcion5">5.- Instalar BBDD SQL en el Servidor</a>
+        </div>
+        <div  class="divcentrado">
+            <a href="#opcion6">6.- Instalar y configurar ERP en el Servidor</a>
+        </div>
+    </div>    
+    <section id="opcion1">
+        <div>
+            <h2>1.- Backup BBDD SQL de mi ordenador</h2>
+            <p>Desde Workbench accedemos a la BBDD Zarca</p>
+            <img src="./img/bbdd_zarca_img1.png" alt="BBDD Zarca">
+            <p>introduce la contraseña</p>
+            <img src="./img/bbdd_zarca_img2.png" alt="contraseña BBDD">
+            <p>Accedes a la BBDD <br><br>
+               Asegurate estar usando la BBDD de Zarca. Para eso habre una sentencia SQL y ejecuta <strong>USE ZARCA</strong> <br><br>
+               Ahora dirigete al menu superior para realizar el Backup de la BBDD <br><br>
+               Server ===> Data Export
+            </p>
+            <img src="./img/bbdd_zarca_img3.png" alt="data Export">
+            <p>
+              Seleciona la BBDD <strong>ZARCA</strong>, Marca el checkbox para exportar los triggers (Dump Triggers) <br><br> 
+              y selecciona la segunda opcion de exportacion (Export to Self-Contained File)
+            </p>
+            <img src="./img/bbdd_zarca_img4.png" alt="opcions export">
+            <p>
+                Ahora pulsar sobre <img src="./img/bbdd_zarca_img5.png"></img>y busca la ruta donde se <br><br>
+                almacenan las copias de segunridad.<br><br>
+                <strong>C:\xampp\htdocs\bbddZarca</strong>
+            </p>
+            <img src="./img/bbdd_zarca_img6.png" alt="ruta fichero">
+            <p>usa como nombre del archivo el ddmmyyy_1 (Ejemplo 01013000_1.sql) y pulsa guardar</p><br>
+            con esto ya tenemos el primer punto terminado
+            <div>
+                <a class="top" href="#top">top</a>
+            </div>
+        </div>
+    </section>
+    <section id="opcion2">
+        <div>
+            <h2>2.- Backup ERP ultima Version</h2>     
+            <p>Este punto es muy rápido consiste en hacer un fichero rar de los directorios Back y Front que tienen <br><br>
+                la version finalizada del modulo que quieres pasar a produccion.</p>
+            <img src="./img/erpimg1.png" alt="fichero rar">
+        </div>
+        <div>
+            <a class="top" href="#top">top</a>
+        </div>
+    </section>
+    <section id="opcion3">
+        <div>
+            <h2>3.- Copiar a la Carpeta compartida</h2>
+            <p>Asegurate de tener acceso a la carpeta del servidor \\lserve\public\prios, <br><br>
+            <img src="./img/copia1.png" alt="ruta de la copia"><br><br>
+
+            es normal que si has reiniciado te pida credenciales, las tienes en tu Keep. Lo mismo te pasara en el servidor <br><br>
+            cuando intentes recuperar los ficheros para la instalación
+        </p>
+        <img src="./img/copia2.png" alt="credenciales">
+        <p>ahora tienes que copiar aqui dentro los dos archivos que vas a instalar en el servidor el de la BBDD y el ERP</p>
+        <img src="./img/copia3.png" alt="ficheros a copiar">
+        </div>
+        <div>
+            <a class="top" href="#top">top</a>
+        </div>
+    </section>
+    <section id="opcion4">
+        <div>
+            <h2>4.- Recuperar en el Servidor Virtual la instalación</h2>
+            <p>Conecta con el escritorio remoto al servidor el ERP IP 192.168.0.16</p>
+            <img src="./img/Recupera1.png" alt="escritorio remoto">
+            <p>Si te falta las credenciales las tienes en el Keep</p>
+            <p>Una vez has iniciado sesion, cierra todos los procesos que esten abiertos del ERP tanto del Back como del Front</p>
+            <p>ahora con los procesos detenidos dirigete a la carpeta xampp\htdocs\zarca-project en el servidor.</p>
+            <img src="./img/erpimg2.png" alt="carpeta erp servidor">
+            <p>Ahora procede ha hacer una copiar de seguridad con un fichero RAR y lo guardas en el directorio c:\backup_modulos del servidor</p>
+            <img src="./img/erpimg3.png" alt="backupmodulos">
+            <p>habre la carpeta compartida en el servidor \\lserver\public\prios y copia los archivos a la carpeta temp del escritorio del servidor </p>
+            <img src="./img/erpimg4.png" alt="copia de ficheros de la carpeta compartida al temp del servidor">
+            <p>Elimina los directorios Backend-zarca y frontend-zarca para tener una instalación limpia</p>
+        </div>
+        <div>
+            <a class="top" href="#top">top</a>
+        </div>
+    </section>
+    <section id="opcion5">
+        <div>
+            <h2>5.- Instalar la BBDD en el Servidor</h2>
+            <p>El proceso es similar al backup <br><br>
+               Primero habre el Workbench, acuerdate que aqui la BBDD se llama ddbb erp, haz dos clicks para que se conecte. <br><br>
+               igual que en el proceso de backup te pedira el password. <br> <br>
+               Aqui no hay que seleccionar la BBDD ya que ese paso lo haras cuando ejecutes la importacion <br><br>
+               Ve a server ===> Data import
+            </p>
+            <img src="./img/backup1.png" alt="Importacion de la BBDD">
+            <p>
+            Busca la 2 Opcion de importacion (Import from Self-Contained File )  
+            </p>            
+            <img src="./img/backup2.png" alt="ruta para la importacion de la BBDD">
+            <p>pulsa sobre el icono de los tres puntitos para navegar hasta la carpeta temp <img src="./img/bbdd_zarca_img5.png" alt="icono tres puntitos"><br>
+                navega hasta la carpeta temp del escritorio y selecciona el fichero SQL a instalar
+            </p>
+            <img src="./img/backup3.png" alt="seleccion de la BBDD a restaurar">
+            <p>Despliega el Defautl Target Schema para seleccionar la BBDD donde vamos a restaurar el backup del SQL</p>
+            <img src="./img/backup4.png" alt="Schema">
+            <p>pulsa el boton <img src="./img/backup5.png" alt="start import">para que empice la importacion <br><br>
+            este proceso <strong>NO ES INMEDIATO, TARDA UNOS MINUTOS</strong> paciencia</p>                
+        </div>
+        <div>
+            <a class="top" href="#top">top</a>
+        </div>
+    </section>
+    <section id="opcion6">
+        <div>
+            <h2>6.- Instalar y configurar ERP en el Servidor</h2>
+            <p>Este proceso es bastante sencillo se trata principalmente en descomprimir el fichero rar del directorio temp,  dentro de la carpeta <br><br>
+            c\xampp\htdocs\zarca-project</p>
+            <img src="./img/backup6.png" alt="extrar fichero rar en el directorio xampp">
+            <p>Ahora tienes que verificar que el fichero .env que esta dentro del directorio backend es como el de la imagen</p>
+            <img src="./img/backup7.png" alt="env">
+            <p>También hay que sustituir una serie de lineas en el Backend para que apunten al servidor local y evitar asi errores de CORS <br><br>
+                dentro del Front en Services
+            </p>
+            <img src="./img/backup8.png" alt="services">
+            <p>hay que modificar todos los archivos *.services.ts que tengan esta linea y tiene que apuntar hacia el servidor</p>
+            <img src="./img/backup9.png" alt="todos los services">
+            <p><strong>El localhost es para el desarrollo en local y el 192.168.0.16:8080 para trabajo en red</strong> <br><br>
+                una vez realizados todos los cambios reiniciamos los servicios <br><br>
+                para el Back-end <strong>npm run dev</strong>
+            </p>
+            <img src="./img/startBack.png" alt="iniciar Back">
+           <p>
+            y para el Front-End <strong>ng serve --o --host 0.0.0.0</strong>
+           </p> 
+            <img src="./img/StartFront.png" alt="iniciar Front">
+            <p> ahora desde el navegador ponemos la ip 192.168.0.16:4200 y se nos abre el ERP</p>
+            <img src="./img/ip.png" alt="desde local">
+
+        </div>
+        <div>
+            <a class="top" href="#top">top</a>
+        </div>
+    </section>
+
+        
+</body>
+</html>
